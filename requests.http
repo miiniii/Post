@@ -1,0 +1,29 @@
+POST http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "name" : "테스트 이름",
+  "address": "테스트 주소",
+  "createdBy": "테스트 만든 사람3",
+  "updatedBy": "테스트 수정한 사람4"
+}
+
+### 사용자 수정
+PUT http://localhost:8080/members
+Content-Type: application/json
+
+{
+  "memberId" : 2,
+  "name" : "테스트 이름88",
+  "address": "테스트 주소88",
+  "updatedBy": "테스트 수정한 사람88"
+}
+
+### 사용자 삭제
+DELETE http://localhost:8080/members/2
+Content-Type: application/json
+
+{
+
+}
+

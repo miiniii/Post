@@ -7,12 +7,9 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class Post {
+public class Post extends BaseTimeDomain{
 
     private String title;
     private String contents;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
-    private String createdBy;
-    private String updatedBy;
+
 }

@@ -10,7 +10,7 @@ CREATE TABLE MEMBER(
 
 CREATE TABLE POST(
         id LONG AUTO_INCREMENT PRIMARY KEY,
-        트 VARCHAR(255) NOT NULL,
+        title VARCHAR(255) NOT NULL,
         contents VARCHAR(255) NOT NULL,
         createdDate TIMESTAMP NOT NULL,
         updatedDate TIMESTAMP NOT NULL,

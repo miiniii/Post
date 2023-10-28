@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Post;
 import com.example.demo.dto.PostCreateRequestDTO;
+import com.example.demo.dto.PostModifyRequestDTO;
 import com.example.demo.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,14 @@ public class PostService {
 
     public void createPost(PostCreateRequestDTO postcreateRequestDTO) {
         postRepository.createPost(postcreateRequestDTO);
+    }
+
+    public void modifyPost(PostModifyRequestDTO postModifyRequestDTO) {
+        postRepository.modifyPost(postModifyRequestDTO);
+    }
+
+    public void deletePost(Long postId) {
+        postRepository.deletePost(postId);
+
     }
 }

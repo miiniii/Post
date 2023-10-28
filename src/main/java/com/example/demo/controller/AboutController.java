@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class AboutController {
 
-    @GetMapping("/")
-    public String goToHome(){
-        return "/index";
+    @GetMapping("/about")
+    public String goToAboutView() {
+        return "/about";
     }
+
 
 }

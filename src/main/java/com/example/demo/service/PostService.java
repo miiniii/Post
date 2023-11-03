@@ -16,10 +16,8 @@ public class PostService {
     private final PostRepository postRepository;
 
     public List<Post> findAll() {
-        List<Post> posts = postRepository.findAll();
+        return postRepository.findAll();
 
-
-        return posts;
     }
 
     public void createPost(PostCreateRequestDTO postcreateRequestDTO) {
@@ -33,5 +31,9 @@ public class PostService {
     public void deletePost(Long postId) {
         postRepository.deletePost(postId);
 
+    }
+
+    public Post findById(Long postId) {
+      return postRepository.findById(postId);
     }
 }

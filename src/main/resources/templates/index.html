@@ -25,10 +25,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">About</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/post">Sample Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">메인</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">이력서</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/post">포트폴리오</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact">방명록</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,8 +39,8 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>Clean Blog</h1>
-                            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                            <h1>상하의 블로그</h1>
+                            <span class="subheading">본 서비스는 개발자의 이력서와 포트폴리오를 확인하실 수 있고 방명록을 남길 수 있는 반응형 웹 페이지입니다.</span>
                         </div>
                     </div>
                 </div>
@@ -52,15 +52,10 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
                     <div class="post-preview" th:each = "post : ${posts}">
-                        <a href="post.html">
+                        <a th:href="@{/modifyPost/{postId}(postId=${post.id})}">
                             <h2 class="post-title" th:text="${post.title}"></h2>
                             <h3 class="post-subtitle" th:text="${post.contents}"></h3>
                         </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 24, 2023
-                        </p>
                     <!-- Divider-->
                     <hr class="my-4" />
                     </div>

@@ -28,6 +28,17 @@ public class PostServiceTest {
 
     @Test
     @Transactional
+    void 게시글이_정상적으로_한_건_조회되는지_테스트(){
+
+        Post postOne = postService.findById(1L);
+
+        Assertions.assertThat(postOne.getTitle()).isEqualTo("테스트 제목1");
+        Assertions.assertThat(postOne.getContents()).isEqualTo("테스트 내용1");
+
+    }
+
+    @Test
+    @Transactional
     void 게시글이_정상적으로_조회되는지_저장되는지_테스트(){
         PostCreateRequestDTO postcreateRequestDTO = new PostCreateRequestDTO();
 

@@ -24,4 +24,7 @@ public interface PostRepository {
 
     @Delete("DELETE FROM POST WHERE id = #{postId}")
     void deletePost(Long postId);
+
+    @Select("SELECT * FROM POST WHERE id = #{postId}")
+    Post findById(Long postId);
 }

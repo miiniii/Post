@@ -25,7 +25,7 @@ public class PostService {
     }
 
     public void modifyPost(PostModifyRequestDTO postModifyRequestDTO) {
-        postRepository.modifyPost(postModifyRequestDTO);
+         postRepository.modifyPost(postModifyRequestDTO);
     }
 
     public void deletePost(Long postId) {

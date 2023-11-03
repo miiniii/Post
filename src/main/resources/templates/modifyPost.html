@@ -60,7 +60,8 @@
                             <!-- To make this form functional, sign up at-->
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
-                            <form id="contactForm" action="/post" method="post">
+                            <form id="contactForm" action="/modifyPost" method="post">
+                                <input type="hidden" id="postId" name="postId" th:value="${post.id}">
                                 <div class="form-floating">
                                     <input class="form-control" id="title" name="title" type="text" th:value="${post.title}" placeholder="제목을 입력해 주세요." data-sb-validations="required" />
                                     <label for="title">제목</label>

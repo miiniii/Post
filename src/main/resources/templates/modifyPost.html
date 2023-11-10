@@ -102,8 +102,8 @@
                                 <!-- an error submitting the form-->
                                 <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                 <!-- Submit Button-->
-                                <button class="btn btn-primary text-uppercase" id="modifyButton">수정하기</button>
-                                <button class="btn btn-primary text-uppercase" id="deleteButton">삭제하기</button>
+                                <button class="btn btn-primary text-uppercase" type="button" id="modifyButton">수정하기</button>
+                                <button class="btn btn-primary text-uppercase" type="button" id="deleteButton">삭제하기</button>
                             </form>
                         </div>
                     </div>
@@ -124,8 +124,8 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
+                            <li class="#!">
+                                <a href="https://github.com/miiniii">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
@@ -133,7 +133,7 @@
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!">
+                                <a href="https://github.com/miiniii">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -184,6 +184,7 @@
                     dataType: "json",
                     complete: function(response) {
                         alert("삭제가 완료되었습니다.");
+                        location.href ="/";
                     }
                 });
             });

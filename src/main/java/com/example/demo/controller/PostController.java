@@ -8,9 +8,7 @@ import com.example.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,14 +43,15 @@ public class PostController {
         return "/modifyPost";
     }
 
-    @PostMapping("/modifyPost")
-    public String modifyPost(PostModifyRequestDTO postModifyRequestDTO, Model model){
-
+    @PutMapping("/modifyPost")
+    @ResponseBody
+    public void modifyPost(@RequestBody PostModifyRequestDTO postModifyRequestDTO){
         postService.modifyPost(postModifyRequestDTO);
-        Post post = postService.findById(postModifyRequestDTO.getPostId());
+    }
 
-        model.addAttribute("post", post);
-
-        return "/modifyPost";
+    @ResponseBody
+    @DeleteMapping("/post/{postId}")
+    public void deletePost(@PathVariable Long postId){
+        postService.deletePost(postId);
     }
 }

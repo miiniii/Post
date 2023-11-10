@@ -60,7 +60,7 @@
                             <!-- To make this form functional, sign up at-->
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
-                            <form id="contactForm" action="/modifyPost" method="post">
+                            <form id="contactForm">
                                 <input type="hidden" id="postId" name="postId" th:value="${post.id}">
                                 <div class="form-floating">
                                     <input class="form-control" id="title" name="title" type="text" th:value="${post.title}" placeholder="제목을 입력해 주세요." data-sb-validations="required" />
@@ -102,7 +102,8 @@
                                 <!-- an error submitting the form-->
                                 <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                 <!-- Submit Button-->
-                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Send</button>
+                                <button class="btn btn-primary text-uppercase" id="modifyButton">수정하기</button>
+                                <button class="btn btn-primary text-uppercase" id="deleteButton">삭제하기</button>
                             </form>
                         </div>
                     </div>
@@ -154,5 +155,38 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script>
+            $("#modifyButton").click(function (){
+                $.ajax({
+                    type:"PUT",
+                    url:"/modifyPost",
+                    data:
+                        JSON.stringify({
+                            postId : $("#postId").val(),
+                            title: $("#title").val(),
+                            contents : $("#contents").val()
+                        }),
+                    contentType : "application/json; charset=utf-8",
+                    dataType: "json",
+                    complete: function(response) {
+                        alert("수정이 완료되었습니다.");
+                    }
+                });
+            });
+
+            $("#deleteButton").click(function (){
+                var postId = $("#postId").val();
+                $.ajax({
+                    type:"DELETE",
+                    url:"/post/" + postId,
+                    contentType : "application/json; charset=utf-8",
+                    dataType: "json",
+                    complete: function(response) {
+                        alert("삭제가 완료되었습니다.");
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

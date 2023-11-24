@@ -37,10 +37,11 @@ public class PostService {
       return postRepository.findById(postId);
     }
 
-    public int addLikeCnt(Long postId) {
+    public synchronized int addLikeCnt(Long postId) {
         // 기존값 가져오기
         int likeCnt = postRepository.findById(postId).getLikeCnt();
 
+        // 동시성 문제(정말 동시에 두 명이상이 좋아요를 눌렀을때)
         likeCnt++;
 
         // db에 저장

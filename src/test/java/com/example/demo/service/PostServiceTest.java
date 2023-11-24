@@ -88,4 +88,16 @@ public class PostServiceTest {
 
         Assertions.assertThat(postService.findById(1L).getLikeCnt()).isEqualTo(1);
     }
+
+    //
+    @Test
+    void 게시글_좋아요_동시성제어_테스트(){
+        // 동시성 제어 테스트 코드
+        // 동시에 100명이 좋아요 누르는 상황 확인
+        // 넣었을 때 잘 동작하는지 파악 + 안넣었을때
+        //쓰레드 두개 만들어서 동시에 실행시켜서 잘 되는지 syn뺏을때 에러가 잘 나는지 확인 !!@
+
+    }
+
+    // 보는 화면이랑 아닌거랑 떼어서 해보기
 }

@@ -225,8 +225,8 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             complete: function (response) {
-                alert(response);
-                $("#likeCnt").val(response)
+                console.log(response.responseText)
+                $("#likeCnt").text(response.responseText)
                 }
         })
     }

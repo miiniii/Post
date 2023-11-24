@@ -12,5 +12,6 @@ public class Post extends BaseTimeDomain{
     private Long id;
     private String title;
     private String contents;
+    private Integer likeCnt;
 
 }

@@ -36,4 +36,15 @@ public class PostService {
     public Post findById(Long postId) {
       return postRepository.findById(postId);
     }
+
+    public void addLikeCnt(Long postId) {
+        // 기존값 가져오기
+        int likeCnt = postRepository.findById(postId).getLikeCnt();
+
+        likeCnt++;
+
+        // db에 저장
+        postRepository.addLikeCnt(postId, likeCnt);
+    }
+
 }

@@ -79,4 +79,13 @@ public class PostServiceTest {
 
         Assertions.assertThat(postService.findAll().size()).isEqualTo(2);
     }
+
+    @Test
+    @Transactional
+    void 게시글의_좋아요가_올라가는지_테스트(){
+
+        postService.addLikeCnt(1L);
+
+        Assertions.assertThat(postService.findById(1L).getLikeCnt()).isEqualTo(1);
+    }
 }

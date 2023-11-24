@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -24,7 +25,7 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public String createPost(PostCreateRequestDTO postCreateRequestDTO, Model model) {
+    public String createPost(@Valid PostCreateRequestDTO postCreateRequestDTO, Model model) {
         postService.createPost(postCreateRequestDTO);
 
         List<Post> posts = postService.findAll();
@@ -45,7 +46,7 @@ public class PostController {
 
     @PutMapping("/modifyPost")
     @ResponseBody
-    public void modifyPost(@RequestBody PostModifyRequestDTO postModifyRequestDTO){
+    public void modifyPost(@RequestBody @Valid PostModifyRequestDTO postModifyRequestDTO){
         postService.modifyPost(postModifyRequestDTO);
     }
 

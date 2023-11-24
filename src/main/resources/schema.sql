@@ -12,6 +12,7 @@ CREATE TABLE POST(
         id LONG AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         contents VARCHAR(255) NOT NULL,
+        likeCnt INT NOT NULL DEFAULT 0,
         createdDate TIMESTAMP NOT NULL,
         updatedDate TIMESTAMP NOT NULL,
         createdBy VARCHAR(255) NOT NULL,

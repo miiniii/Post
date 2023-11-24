@@ -55,4 +55,11 @@ public class PostController {
     public void deletePost(@PathVariable Long postId){
         postService.deletePost(postId);
     }
+
+    @PutMapping("/post/addLikeCnt/{postId}")
+    @ResponseBody
+    public int addLikeCntPost(@PathVariable Long postId) {
+        return postService.addLikeCnt(postId);
+
+    }
 }

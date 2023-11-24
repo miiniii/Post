@@ -28,6 +28,6 @@ public interface PostRepository {
     @Select("SELECT * FROM POST WHERE id = #{postId}")
     Post findById(Long postId);
 
-    @Update("UPDATE POST SET updateDate = CURRENT_TIMESTAMP, likeCnt = #{likeCnt} WHERE id = #{postId}")
+    @Update("UPDATE POST SET updatedDate = CURRENT_TIMESTAMP, likeCnt = #{likeCnt} WHERE id = #{postId}")
     void addLikeCnt(Long postId, Integer likeCnt);
 }

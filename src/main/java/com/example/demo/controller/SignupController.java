@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequiredArgsConstructor
-public class LoginController {
+public class SignupController {
 
-    @GetMapping("/login")
+    @GetMapping("/signUp")
     public String goToAboutView() {
-        return "/login";
+
+        return "/signUp";
     }
-
-
 }

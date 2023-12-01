@@ -65,7 +65,7 @@
                     <form id="contactForm" action="/post" method="post">
                         <div class="form-floating">
                             <input class="form-control" id="title" name="title" type="text" placeholder="제목을 입력해 주세요." data-sb-validations="required" />
-                            <label for="title">제목</label>
+                            <label for="title">아이디</label>
                             <div class="invalid-feedback" data-sb-feedback="name:required">제목이 입력되지 않았습니다.</div>
                         </div>
                         <!--                                <div class="form-floating">-->
@@ -80,8 +80,8 @@
                         <!--                                    <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>-->
                         <!--                                </div>-->
                         <div class="form-floating">
-                            <textarea class="form-control" id="contents" name="contents" placeholder="내용을 입력해주세요" style="height: 12rem" data-sb-validations="required"></textarea>
-                            <label for="contents">내용</label>
+                            <input type="password" class="form-control" id="contents" name="contents" placeholder="내용을 입력해주세요" style="height: 12rem" data-sb-validations="required"></input>
+                            <label for="contents">비밀번호</label>
                             <div class="invalid-feedback" data-sb-feedback="message:required">내용이 입력되지 않았습니다.</div>
                         </div>
                         <br />
@@ -103,8 +103,12 @@
                         <!-- an error submitting the form-->
                         <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                         <!-- Submit Button-->
-                        <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">작성</button>
+<!--                        <button class="btn btn-primary text-uppercase" id="findButton" type="submit">아이디/비밀번호 찾기</button>-->
+<!--                        <button class="btn btn-primary text-uppercase" id="signButton" type="submit">회원가입</button>-->
+                        <button class="btn btn-primary text-uppercase" id="loginButton" type="submit">로그인</button>
                     </form>
+                <button class="btn btn-primary text-uppercase" id="findButton" >아이디/비밀번호 찾기</button>
+                <button class="btn btn-primary text-uppercase" id="signButton" >회원가입</button>
                 </div>
             </div>
         </div>
@@ -157,6 +161,14 @@
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
+    //클릭 이벤트 잡기
+
+    $("#signButton").click(function () {
+        $(location).attr('href', "/signUp");
+    });
+
+
+
     $("#contactForm").submit(function (event) {
 
 

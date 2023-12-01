@@ -10,6 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 public class PostServiceTest {
@@ -19,7 +23,7 @@ public class PostServiceTest {
 
     @Test
     @Transactional
-    void 게시글이_정상적으로_조회되는지_테스트(){
+    void 게시글이_정상적으로_조회되는지_테스트() {
         List<Post> posts = postService.findAll();
 
         Assertions.assertThat(posts.get(0).getTitle()).isEqualTo("테스트 제목1");
@@ -28,7 +32,7 @@ public class PostServiceTest {
 
     @Test
     @Transactional
-    void 게시글이_정상적으로_한_건_조회되는지_테스트(){
+    void 게시글이_정상적으로_한_건_조회되는지_테스트() {
 
         Post postOne = postService.findById(1L);
 
@@ -39,7 +43,7 @@ public class PostServiceTest {
 
     @Test
     @Transactional
-    void 게시글이_정상적으로_조회되는지_저장되는지_테스트(){
+    void 게시글이_정상적으로_조회되는지_저장되는지_테스트() {
         PostCreateRequestDTO postcreateRequestDTO = new PostCreateRequestDTO();
 
         postcreateRequestDTO.setTitle("테스트 제목5");
@@ -56,7 +60,7 @@ public class PostServiceTest {
 
     @Test
     @Transactional
-    void 게시글이_정상적으로_조회되는지_수정되는지_테스트(){
+    void 게시글이_정상적으로_조회되는지_수정되는지_테스트() {
         PostModifyRequestDTO postModifyRequestDTO = new PostModifyRequestDTO();
 
         postModifyRequestDTO.setPostId(1L);
@@ -73,7 +77,7 @@ public class PostServiceTest {
 
     @Test
     @Transactional
-    void 게시글이_정상적으로_조회되는지_삭제되는지_테스트(){
+    void 게시글이_정상적으로_조회되는지_삭제되는지_테스트() {
 
         postService.deletePost(1L);
 
@@ -82,22 +86,35 @@ public class PostServiceTest {
 
     @Test
     @Transactional
-    void 게시글의_좋아요가_올라가는지_테스트(){
+    void 게시글의_좋아요가_올라가는지_테스트() {
 
         postService.addLikeCnt(1L);
 
         Assertions.assertThat(postService.findById(1L).getLikeCnt()).isEqualTo(1);
     }
 
-    //
+
     @Test
-    void 게시글_좋아요_동시성제어_테스트(){
+    void 게시글_좋아요_동시성제어_테스트() {
         // 동시성 제어 테스트 코드
         // 동시에 100명이 좋아요 누르는 상황 확인
-        // 넣었을 때 잘 동작하는지 파악 + 안넣었을때
-        //쓰레드 두개 만들어서 동시에 실행시켜서 잘 되는지 syn뺏을때 에러가 잘 나는지 확인 !!@
+        int numberOfThreads = 100;
+
+        ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
+        CountDownLatch countDownLatch = new CountDownLatch(numberOfThreads);
+
+        for (int i = 0; i < numberOfThreads; i++) {
+            executorService.execute(() ->
+                    postService.addLikeCnt(1L)
+            );
+            countDownLatch.countDown();
+
+            countDownLatch.await(10, TimeUnit.SECONDS);
+
+            Assertions.assertThat(postService.findById(1L).getLikeCnt()).isEqualTo(100);
+        }
 
     }
-
-    // 보는 화면이랑 아닌거랑 떼어서 해보기
 }
+
+

@@ -6,17 +6,18 @@ import com.example.demo.dto.MemberModifyRequestDTO;
 import com.example.demo.dto.MembercreateRequestDTO;
 import org.apache.ibatis.annotations.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Mapper
 public interface MemberRepository {
 
     @Select("SELECT * FROM MEMBER")
-    List<Member> findAll(); //Member로 된 애들 findall
+    List<Member> findAll(); 
 
 
-    @Insert("INSERT INTO MEMBER(name, address, createdDate, updatedDate, createdBy, updatedBy)" +
-    "VALUES(#{name}, #{address}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{createdBy},#{updatedBy})")
+    @Insert("INSERT INTO MEMBER(loginId, password, name, address, phoneNumber, createdDate, updatedDate, createdBy, updatedBy)" +
+    "VALUES(#{loginId}, #{password}, #{name}, #{address}, #{phoneNumber}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{createdBy},#{updatedBy})")
     void createMember(MembercreateRequestDTO membercreateRequestDTO);
 
 

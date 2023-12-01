@@ -95,7 +95,7 @@ public class PostServiceTest {
 
 
     @Test
-    void 게시글_좋아요_동시성제어_테스트() {
+    void 게시글_좋아요_동시성제어_테스트() throws InterruptedException {
         // 동시성 제어 테스트 코드
         // 동시에 100명이 좋아요 누르는 상황 확인
         int numberOfThreads = 100;

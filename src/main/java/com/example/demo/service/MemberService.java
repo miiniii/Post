@@ -29,6 +29,8 @@ public class MemberService {
 
 
     public void createMember(MembercreateRequestDTO membercreateRequestDTO) {
+        membercreateRequestDTO.setCreatedBy(membercreateRequestDTO.getLoginId());
+        membercreateRequestDTO.setUpdatedBy(membercreateRequestDTO.getLoginId());
         memberRepository.createMember(membercreateRequestDTO);
     }
 

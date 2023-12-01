@@ -32,8 +32,11 @@ class MemberServiceTest {
     @Transactional
     void 사용자가_정상적으로_추가되는지_확인한다() {
         MembercreateRequestDTO membercreateRequestDTO = new MembercreateRequestDTO();
+        membercreateRequestDTO.setLoginId("테스트 아이디");
+        membercreateRequestDTO.setPassword("테스트 비밀번호");
         membercreateRequestDTO.setName("테스트 이름");
-        membercreateRequestDTO.setAddress("테스트 주소");
+        membercreateRequestDTO.setEmail("test@test.com");
+        membercreateRequestDTO.setPhoneNumber("010-2138-2328");
         membercreateRequestDTO.setCreatedBy("테스트 만든 사람3");
         membercreateRequestDTO.setUpdatedBy("테스트 수정한 사람4");
 

@@ -1,8 +1,9 @@
 CREATE TABLE MEMBER(
-           loginId LONG AUTO_INCREMENT PRIMARY KEY,
+           id LONG AUTO_INCREMENT PRIMARY KEY,
+           loginId VARCHAR(255) UNIQUE NOT NULL,
            password VARCHAR(10) NOT NULL,
            name VARCHAR(255) NOT NULL,
-           address VARCHAR(255) NOT NULL,
+           email VARCHAR(255) NOT NULL,
            phoneNumber VARCHAR(15) NOT NULL,
            createdDate TIMESTAMP NOT NULL,
            updatedDate TIMESTAMP NOT NULL,

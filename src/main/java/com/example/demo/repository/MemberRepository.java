@@ -13,11 +13,11 @@ import java.util.List;
 public interface MemberRepository {
 
     @Select("SELECT * FROM MEMBER")
-    List<Member> findAll(); 
+    List<Member> findAll();
 
 
-    @Insert("INSERT INTO MEMBER(loginId, password, name, address, phoneNumber, createdDate, updatedDate, createdBy, updatedBy)" +
-    "VALUES(#{loginId}, #{password}, #{name}, #{address}, #{phoneNumber}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{createdBy},#{updatedBy})")
+    @Insert("INSERT INTO MEMBER(loginId, password, name, email, phoneNumber, createdDate, updatedDate, createdBy, updatedBy)" +
+    "VALUES(#{loginId}, #{password}, #{name}, #{email}, #{phoneNumber}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{createdBy},#{updatedBy})")
     void createMember(MembercreateRequestDTO membercreateRequestDTO);
 
 

@@ -1,7 +1,7 @@
-INSERT INTO MEMBER(loginId, password, name, address, phoneNumber,
+INSERT INTO MEMBER(loginId, password, name, email, phoneNumber,
                    createdDate, updatedDate, createdBy, updatedBy)
-VALUES ('IUIUIU01','abc123123!', '아이유', 'IUIU0302@naver.com','010-1234-1234' CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin'),
-       ('aaa0001','dasd12!@#','aaa','adsd@daum.net','010-1233-6456', '용산구', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin'),
+VALUES ('IUIUIU01','abc123123!', '아이유', 'IUIU0302@naver.com','010-1234-1234', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin'),
+       ('aaa0001','dasd12!@#','aaa','adsd@daum.net','010-1233-6456', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin'),
        ('bbbas','asd123','bbb', 'sadas@gmail.com','010-7657-2334', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin');
 
 INSERT INTO POST(title, contents,likeCnt ,createdDate, updatedDate, createdBy, updatedBy)

@@ -12,7 +12,7 @@ public class MembercreateRequestDTO {
     private String loginId;
     private String password;
     private String name;
-    private String address;
+    private String email;
     private String phoneNumber;
     private LocalDateTime createDate; // yyymmdd ssMMnn 초까지 다 나옴
     private LocalDateTime updateDate;

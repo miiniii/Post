@@ -43,5 +43,18 @@ public class MemberService {
     public void deleteMember(Long memberId){
         memberRepository.deleteMember(memberId); // 가지고 가는 값이여서 타입지정 필요X
     }
+
+    public Member findByIdAndPassword(String loginId, String password) {
+
+        Member loginInfo = memberRepository.findIdAndPassword(loginId, password);
+
+        if (loginInfo == null) {
+            throw new RuntimeException("회원 정보가 존재하지 않습니다.");
+        }
+
+        return loginInfo;
+
+
+    }
 }
 

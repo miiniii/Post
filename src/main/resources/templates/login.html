@@ -105,7 +105,7 @@
                         <!-- Submit Button-->
 <!--                        <button class="btn btn-primary text-uppercase" id="findButton" type="submit">아이디/비밀번호 찾기</button>-->
 <!--                        <button class="btn btn-primary text-uppercase" id="signButton" type="submit">회원가입</button>-->
-                        <button class="btn btn-primary text-uppercase" id="loginButton" type="submit">로그인</button>
+                        <button class="btn btn-primary text-uppercase" id="loginButton" type="button">로그인</button>
                     </form>
                 <button class="btn btn-primary text-uppercase" id="findButton" >아이디/비밀번호 찾기</button>
                 <button class="btn btn-primary text-uppercase" id="signButton" >회원가입</button>
@@ -161,42 +161,51 @@
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
-    //클릭 이벤트 잡기
 
-    // $("#signButton").click(function () {
-    //     $(location).attr('href', "/signUp");
-    // });
-    //
-    //
-    //
-    // $("#contactForm").submit(function (event) {
-    //
-    //
-    //     return isNotEmptyTitleAndContents();
-    //
-    //     // var value = createValidationCheck();
-    //     //
-    //     //
-    //     // if (!createValidationCheck()){
-    //     //     return false;
-    //     // };
-    //     // });
-    // });
-    // function isNotEmptyTitleAndContents(){
-    //     var title = $("#title").val();
-    //     var contents = $("#contents").val();
-    //
-    //     if (title == null || title == "") {
-    //         alert("제목을 작성해주세요.")
-    //         return false;
-    //     }
-    //
-    //     if (contents == null || contents == "") {
-    //         alert("내용을 작성해주세요.")
-    //         return false;
-    //     }
-    //     return true;
-    // }
+    $("#loginButton").click(function () {
+        if (validationCheck()) {
+            requestAjaxLogin();
+        }
+    });
+
+    function validationCheck() {
+        var loginId = $("#loginId").val();
+        var password = $("#password").val();
+
+        if (loginId == null || loginId == "") {
+            alert("아이디를 입력해주세요.")
+            return false;
+        }
+
+        if (password == null || password == "") {
+            alert("비밀번호를 입력해주세요.")
+            return false;
+        }
+
+        return true;
+    };
+
+
+    function requestAjaxLogin() {
+        $.ajax({
+            type: "POST",
+            url: "/login",
+            data:
+                JSON.stringify({
+                    loginId: $("#loginId").val(),
+                    password: $("#password").val(),
+                }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                alert("로그인 되었습니다.");
+            },
+            error: function (response) {
+                alert("로그인에 실패했습니다.")
+            }
+        });
+    }
+
 </script>
 </body>
 </html>

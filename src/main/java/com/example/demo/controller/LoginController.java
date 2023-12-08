@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Member;
 import com.example.demo.dto.LoginRequestDTO;
+import com.example.demo.service.MemberService;
 import com.example.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -9,11 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
 
-    private final PostService postService;
+    private final MemberService memberService;
 
     @GetMapping("/login")
     public String goToAboutView() {
@@ -21,17 +26,24 @@ public class LoginController {
     }
 
     @PostMapping ("/login")
-    public String login(@RequestBody LoginRequestDTO loginRequestDTO) {
+    public String login(LoginRequestDTO loginRequestDTO, HttpServletRequest request) {
 
-        // 아이디랑 비번 가지고 넘어와서 로그인 로직 만들기
-//        postService.login(loginRequestDTO);
-        System.out.println(loginRequestDTO.getLoginId());
-        System.out.println(loginRequestDTO.getPassword());
-        System.out.println("로그인 요청");
+        String loginId = loginRequestDTO.getLoginId();
+        String password = loginRequestDTO.getPassword();
 
 
+        // 우리 DB에 이 아이디에 패스워드가 존재하는지 확인
+        Member loginInfo = memberService.findByIdAndPassword(loginId, password);
 
-        return "";
+
+
+
+        // 로그인이 완료돼서 세션에 로그인 정보를 저장
+        HttpSession session = request.getSession();
+        session.setAttribute("loginId", loginRequestDTO.getLoginId());
+        session.setMaxInactiveInterval(1800); // 세션 30분 유지
+
+        return "index";
     }
 
 

@@ -28,6 +28,6 @@ public interface MemberRepository {
     @Delete("DELETE FROM MEMBER WHERE id = #{memberId}")
     void deleteMember(Long memberId);
 
-    @Select("SELECT * FROM MEMBER WHERE id = #{loginId} AND password = #{password}")
+    @Select("SELECT * FROM MEMBER WHERE loginId = #{loginId} AND password = #{password}")
     Member findIdAndPassword(String loginId, String password);
 }

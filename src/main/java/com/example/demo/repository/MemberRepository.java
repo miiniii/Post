@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface MemberRepository {
 
-    @Select("SELECT * FROM MEMBER")
+    @Select("SELECT id, longinId, password, email, phoneNumber, createdDate, updatedDate, createdBy, updatedBy FROM MEMBER")
     List<Member> findAll();
 
 
@@ -28,6 +28,6 @@ public interface MemberRepository {
     @Delete("DELETE FROM MEMBER WHERE id = #{memberId}")
     void deleteMember(Long memberId);
 
-    @Select("SELECT * FROM MEMBER WHERE loginId = #{loginId} AND password = #{password}")
+    @Select("SELECT id, longinId, password, email, phoneNumber, createdDate, updatedDate, createdBy, updatedBy FROM MEMBER WHERE loginId = #{loginId} AND password = #{password}")
     Member findIdAndPassword(String loginId, String password);
 }

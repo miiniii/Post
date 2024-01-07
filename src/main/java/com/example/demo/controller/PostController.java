@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.domain.Post;
 import com.example.demo.dto.PostCreateRequestDTO;
 import com.example.demo.dto.PostModifyRequestDTO;
-import com.example.demo.repository.PostRepository;
 import com.example.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

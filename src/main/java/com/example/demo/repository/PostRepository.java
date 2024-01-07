@@ -15,7 +15,7 @@ public interface PostRepository {
     void createPost(PostCreateRequestDTO postCreateRequestDTO);
 
 
-    @Select("SELECT * FROM POST")
+    @Select("SELECT id, title, contents, likeCnt, createdDate, updatedDate, createdBy, updatedBy FROM POST")
     List<Post> findAll();
 
     @Update("UPDATE POST SET title = #{title}, contents = #{contents}, updatedDate = CURRENT_TIMESTAMP, updatedBy = 'admin'" +
@@ -25,7 +25,7 @@ public interface PostRepository {
     @Delete("DELETE FROM POST WHERE id = #{postId}")
     void deletePost(Long postId);
 
-    @Select("SELECT * FROM POST WHERE id = #{postId}")
+    @Select("SELECT id, title, contents, likeCnt, createdDate, updatedDate, createdBy, updatedBy FROM POST WHERE id = #{postId}")
     Post findById(Long postId);
 
     @Update("UPDATE POST SET updatedDate = CURRENT_TIMESTAMP, likeCnt = #{likeCnt} WHERE id = #{postId}")

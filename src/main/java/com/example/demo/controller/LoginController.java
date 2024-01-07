@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.domain.Member;
 import com.example.demo.dto.LoginRequestDTO;
 import com.example.demo.service.MemberService;
-import com.example.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -15,30 +15,30 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/members")
 public class MemberController {
 
     //@Autowired // 컨테이너에 있는 빈을 올라가면서 넣어줌, 필드주입
     private final MemberService memberService; // 이렇게 해도 주입됨, 생성자 주입(더 안정적이라 선호됨)
 
-    @GetMapping("/members")
+    @GetMapping
     public List<Member> findMembers(){
         return memberService.findAll();
 //        MemberService memberService = new MemberService(); 빈 없을때
     }
 
-    @PostMapping("/members")
+    @PostMapping
     public void createMember(@RequestBody MembercreateRequestDTO membercreateRequestDTO){
         memberService.createMember(membercreateRequestDTO);
     }
 
 
-
-    @PutMapping("/members")
+    @PutMapping
     public void modifyMember(@RequestBody MemberModifyRequestDTO memberModifyRequestDTO){
         memberService.modifyMember(memberModifyRequestDTO);
     }
 
-    @DeleteMapping("/members/{memberId}")
+    @DeleteMapping("/{memberId}")
     public void deleteMember(@PathVariable Long memberId){
 
         memberService.deleteMember(memberId);
